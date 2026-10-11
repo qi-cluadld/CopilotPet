@@ -1,9 +1,9 @@
 ﻿#Requires -Version 5.1
 <#
-  GitHub Copilot 桌面小宠物 / GitHub Copilot Desktop Pet  ✦
+  Copilot 桌面小宠物 / Copilot Desktop Pet  ✦
   ---------------------------------------------------------------
   * 纯 Windows 自带组件实现(WPF + PowerShell 5.1),无需安装任何依赖
-  * 一只 GitHub Copilot 六瓣小飞(OpenAI 花标造型):星芒会慢慢转,还会冒出"正在输入…"的三个点
+  * 一只 Copilot 六瓣小飞(OpenAI 花标造型):星芒会慢慢转,还会冒出"正在输入…"的三个点
   * 左键拖动移动,右键菜单(打招呼、摸摸头、思考中、冒个泡、大小、挪个地方、退出)
   * 不抢焦点(可在你打字时安静地待在角落)
 

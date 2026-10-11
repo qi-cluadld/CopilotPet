@@ -1,6 +1,6 @@
-﻿# GitHub Copilot 桌面小宠物 🚀
+# Copilot 桌面小宠物 🚀
 
-一只趴在你桌面上的 **GitHub Copilot** 小宠物：会浮动、眨眼、转圈、思考、睡着，点它有反应，并且和桌面上其它 AI 宠物（Gemini ✨ / DeepSeek 🐋 / ChatGPT ✦ / Claude ☀ / 豆包 🥟 / Qwen 🌀 / Copilot 🚀）**互相打招呼、聊天、送爱心、吵架再和好**。
+一只趴在你桌面上的 **Copilot** 小宠物：会浮动、眨眼、转圈、思考、睡着，点它有反应，并且和桌面上其它 AI 宠物（Gemini ✨ / DeepSeek 🐋 / ChatGPT ✦ / Claude ☀ / 豆包 🥟 / Qwen 🌀 / Copilot 🚀）**互相打招呼、聊天、送爱心、吵架再和好**。
 
 - **零依赖**：只用 Windows 自带的 WPF + PowerShell，不用装 Python / Node / 任何运行库
 - **不抢焦点**：`WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW`，点它不会打断你打字
