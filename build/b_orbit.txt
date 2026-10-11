@@ -5,9 +5,9 @@ function New-MarkBrush {
     $b.Center = New-Object System.Windows.Point(120, 92)
     $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
     $b.RadiusX = 152; $b.RadiusY = 152
-    [void]$b.GradientStops.Add((New-Gs '#FFE6F6FF' 0))
-    [void]$b.GradientStops.Add((New-Gs '#FF5FB8F0' 0.45))
-    [void]$b.GradientStops.Add((New-Gs '#FF2C8FD6' 1))
+    [void]$b.GradientStops.Add((New-Gs '#FFFFE28A' 0))
+    [void]$b.GradientStops.Add((New-Gs '#FFE3008C' 0.45))
+    [void]$b.GradientStops.Add((New-Gs '#FF8661C5' 1))
     return $b
 }
 
@@ -20,7 +20,7 @@ function Initialize-Blossom {
         $p.Data = [System.Windows.Media.Geometry]::Parse($script:PetalData)
         $p.Fill = New-MarkBrush
         $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
-        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 45)
+        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 45 + 12)
         $p.IsHitTestVisible = $false
         [System.Windows.Controls.Canvas]::SetLeft($p, $script:CenterX)
         [System.Windows.Controls.Canvas]::SetTop($p, $script:CenterY)
@@ -36,7 +36,7 @@ function Initialize-Orbit {
     foreach ($phase in @(0.6, 2.7, 4.8)) {
         $p = New-Object System.Windows.Shapes.Path
         $p.Data = [System.Windows.Media.Geometry]::Parse($script:SparkData)
-        $p.Fill = New-LinBrush -colors @('#F2FFFFFF', '#FFD4EEFF') -offsets @(0, 1)
+        $p.Fill = New-LinBrush -colors @('#F2FFFFFF', '#FFFFD9F0') -offsets @(0, 1)
         $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
         $rt = New-Object System.Windows.Media.RotateTransform(0)
         $p.RenderTransform = $rt

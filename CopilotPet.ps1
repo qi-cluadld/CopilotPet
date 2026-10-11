@@ -189,7 +189,7 @@ $xaml = @'
         <Ellipse.Fill>
           <RadialGradientBrush>
             <GradientStop Color="#59F3B79C" Offset="0.30"/>
-            <GradientStop Color="#2E2B9BF4" Offset="0.68"/>
+            <GradientStop Color="#2E6B4EE6" Offset="0.68"/>
             <GradientStop Color="#00BD5D3A" Offset="1"/>
           </RadialGradientBrush>
         </Ellipse.Fill>
@@ -200,13 +200,13 @@ $xaml = @'
       <Path x:Name="Body" Data="{BODY}" IsHitTestVisible="True">
         <Path.Fill>
           <RadialGradientBrush MappingMode="Absolute" Center="120,92" GradientOrigin="120,92" RadiusX="152" RadiusY="152">
-            <GradientStop Color="#FFBFE4FF" Offset="0"/>
-            <GradientStop Color="#FF5FB8F0" Offset="0.45"/>
-            <GradientStop Color="#FF2C8FD6" Offset="1"/>
+            <GradientStop Color="#FFF8D22A" Offset="0"/>
+            <GradientStop Color="#FFE3008C" Offset="0.45"/>
+            <GradientStop Color="#FF8661C5" Offset="1"/>
           </RadialGradientBrush>
         </Path.Fill>
         <Path.Effect>
-          <DropShadowEffect Color="#7A0E2A44" BlurRadius="16" ShadowDepth="5" Direction="270" Opacity="0.5"/>
+          <DropShadowEffect Color="#7A14143C" BlurRadius="16" ShadowDepth="5" Direction="270" Opacity="0.5"/>
         </Path.Effect>
       </Path>
 
@@ -231,16 +231,16 @@ $xaml = @'
         <Ellipse Width="24" Height="27" Canvas.Left="92" Canvas.Top="100.5">
           <Ellipse.Fill>
             <LinearGradientBrush StartPoint="0.2,0" EndPoint="0.8,1">
-              <GradientStop Color="#FF14385C" Offset="0"/>
-              <GradientStop Color="#FF0E2A44" Offset="1"/>
+              <GradientStop Color="#FF2B1B5E" Offset="0"/>
+              <GradientStop Color="#FF14143C" Offset="1"/>
             </LinearGradientBrush>
           </Ellipse.Fill>
         </Ellipse>
         <Ellipse Width="24" Height="27" Canvas.Left="124" Canvas.Top="100.5">
           <Ellipse.Fill>
             <LinearGradientBrush StartPoint="0.2,0" EndPoint="0.8,1">
-              <GradientStop Color="#FF14385C" Offset="0"/>
-              <GradientStop Color="#FF0E2A44" Offset="1"/>
+              <GradientStop Color="#FF2B1B5E" Offset="0"/>
+              <GradientStop Color="#FF14143C" Offset="1"/>
             </LinearGradientBrush>
           </Ellipse.Fill>
         </Ellipse>
@@ -252,13 +252,13 @@ $xaml = @'
 
       <!-- 眼睛(笑成弯月) -->
       <Canvas x:Name="EyeHappy" Width="240" Height="240" Visibility="Collapsed" IsHitTestVisible="False">
-        <Path Data="M -11,3 Q 0,-9 11,3" Stroke="#FF0E2A44" StrokeThickness="4"
+        <Path Data="M -11,3 Q 0,-9 11,3" Stroke="#FF14143C" StrokeThickness="4"
               StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round">
           <Path.RenderTransform>
             <TranslateTransform X="104" Y="115"/>
           </Path.RenderTransform>
         </Path>
-        <Path Data="M -11,3 Q 0,-9 11,3" Stroke="#FF0E2A44" StrokeThickness="4"
+        <Path Data="M -11,3 Q 0,-9 11,3" Stroke="#FF14143C" StrokeThickness="4"
               StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round">
           <Path.RenderTransform>
             <TranslateTransform X="136" Y="115"/>
@@ -268,19 +268,19 @@ $xaml = @'
 
       <!-- 嘴 -->
       <Canvas x:Name="Mouth" Width="240" Height="240" IsHitTestVisible="False">
-        <Path x:Name="MouthSmile" Data="M -9,0 Q 0,9 9,0" Stroke="#FF0E2A44" StrokeThickness="3.2"
+        <Path x:Name="MouthSmile" Data="M -9,0 Q 0,9 9,0" Stroke="#FF14143C" StrokeThickness="3.2"
               StrokeStartLineCap="Round" StrokeEndLineCap="Round">
           <Path.RenderTransform>
             <TranslateTransform X="120" Y="138"/>
           </Path.RenderTransform>
         </Path>
-        <Path x:Name="MouthFlat" Data="M -7,0 L 7,0" Stroke="#FF0E2A44" StrokeThickness="3.2"
+        <Path x:Name="MouthFlat" Data="M -7,0 L 7,0" Stroke="#FF14143C" StrokeThickness="3.2"
               StrokeStartLineCap="Round" StrokeEndLineCap="Round" Visibility="Collapsed">
           <Path.RenderTransform>
             <TranslateTransform X="120" Y="139"/>
           </Path.RenderTransform>
         </Path>
-        <Ellipse x:Name="MouthOpen" Width="12" Height="14" Canvas.Left="114" Canvas.Top="131" Fill="#FF0E2A44" Visibility="Collapsed"/>
+        <Ellipse x:Name="MouthOpen" Width="12" Height="14" Canvas.Left="114" Canvas.Top="131" Fill="#FF14143C" Visibility="Collapsed"/>
       </Canvas>
 
       <!-- 腮红 -->
@@ -288,7 +288,7 @@ $xaml = @'
         <Ellipse Width="24" Height="12" Canvas.Left="73" Canvas.Top="120">
           <Ellipse.Fill>
             <RadialGradientBrush>
-              <GradientStop Color="#FFFFC48F" Offset="0"/>
+              <GradientStop Color="#FFFF8C00" Offset="0"/>
               <GradientStop Color="#00FFC48F" Offset="1"/>
             </RadialGradientBrush>
           </Ellipse.Fill>
@@ -296,7 +296,7 @@ $xaml = @'
         <Ellipse Width="24" Height="12" Canvas.Left="143" Canvas.Top="120">
           <Ellipse.Fill>
             <RadialGradientBrush>
-              <GradientStop Color="#FFFFC48F" Offset="0"/>
+              <GradientStop Color="#FFFF8C00" Offset="0"/>
               <GradientStop Color="#00FFC48F" Offset="1"/>
             </RadialGradientBrush>
           </Ellipse.Fill>
@@ -312,24 +312,24 @@ $xaml = @'
         </Path>
         <Border Canvas.Left="136" Canvas.Top="16" Width="64" Height="38" CornerRadius="14" Background="#F2FFFFFF">
           <Border.Effect>
-            <DropShadowEffect Color="#4D0E2A44" BlurRadius="10" ShadowDepth="2" Direction="270" Opacity="0.4"/>
+            <DropShadowEffect Color="#4D14143C" BlurRadius="10" ShadowDepth="2" Direction="270" Opacity="0.4"/>
           </Border.Effect>
         </Border>
-        <Ellipse x:Name="Dot1" Width="9" Height="9" Canvas.Left="147" Canvas.Top="30" Fill="#FF2B9BF4"/>
-        <Ellipse x:Name="Dot2" Width="9" Height="9" Canvas.Left="162" Canvas.Top="30" Fill="#FF2B9BF4"/>
-        <Ellipse x:Name="Dot3" Width="9" Height="9" Canvas.Left="177" Canvas.Top="30" Fill="#FF2B9BF4"/>
+        <Ellipse x:Name="Dot1" Width="9" Height="9" Canvas.Left="147" Canvas.Top="30" Fill="#FF0F6CBD"/>
+        <Ellipse x:Name="Dot2" Width="9" Height="9" Canvas.Left="162" Canvas.Top="30" Fill="#FF0F6CBD"/>
+        <Ellipse x:Name="Dot3" Width="9" Height="9" Canvas.Left="177" Canvas.Top="30" Fill="#FF0F6CBD"/>
       </Canvas>
     </Canvas>
   </Canvas>
 
   <!-- 说话气泡(放在 PetWrap 之外, 所以不会跟着宠物一起旋转) -->
   <Border x:Name="SayBubble" Canvas.Left="16" Canvas.Top="2" MaxWidth="208" CornerRadius="14"
-          Background="#F2FFFFFF" BorderBrush="#4D2B9BF4" BorderThickness="1.2" Padding="10,6"
+          Background="#F2FFFFFF" BorderBrush="#4D0F6CBD" BorderThickness="1.2" Padding="10,6"
           Visibility="Collapsed" IsHitTestVisible="False">
     <Border.Effect>
-      <DropShadowEffect Color="#4D0E2A44" BlurRadius="10" ShadowDepth="2" Direction="270" Opacity="0.45"/>
+      <DropShadowEffect Color="#4D14143C" BlurRadius="10" ShadowDepth="2" Direction="270" Opacity="0.45"/>
     </Border.Effect>
-    <TextBlock x:Name="SayText" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF11304D" TextWrapping="Wrap"/>
+    <TextBlock x:Name="SayText" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="#FF1E1548" TextWrapping="Wrap"/>
   </Border>
   <Canvas x:Name="OrbitLayer" Width="240" Height="240" IsHitTestVisible="False"/>
   <Canvas x:Name="ParticleLayer" Width="240" Height="240" IsHitTestVisible="False"/>
@@ -369,9 +369,9 @@ function New-MarkBrush {
     $b.Center = New-Object System.Windows.Point(120, 92)
     $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
     $b.RadiusX = 152; $b.RadiusY = 152
-    [void]$b.GradientStops.Add((New-Gs '#FFE6F6FF' 0))
-    [void]$b.GradientStops.Add((New-Gs '#FF5FB8F0' 0.45))
-    [void]$b.GradientStops.Add((New-Gs '#FF2C8FD6' 1))
+    [void]$b.GradientStops.Add((New-Gs '#FFFFE28A' 0))
+    [void]$b.GradientStops.Add((New-Gs '#FFE3008C' 0.45))
+    [void]$b.GradientStops.Add((New-Gs '#FF8661C5' 1))
     return $b
 }
 
@@ -384,7 +384,7 @@ function Initialize-Blossom {
         $p.Data = [System.Windows.Media.Geometry]::Parse($script:PetalData)
         $p.Fill = New-MarkBrush
         $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
-        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 45)
+        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 45 + 12)
         $p.IsHitTestVisible = $false
         [System.Windows.Controls.Canvas]::SetLeft($p, $script:CenterX)
         [System.Windows.Controls.Canvas]::SetTop($p, $script:CenterY)
@@ -400,7 +400,7 @@ function Initialize-Orbit {
     foreach ($phase in @(0.6, 2.7, 4.8)) {
         $p = New-Object System.Windows.Shapes.Path
         $p.Data = [System.Windows.Media.Geometry]::Parse($script:SparkData)
-        $p.Fill = New-LinBrush -colors @('#F2FFFFFF', '#FFD4EEFF') -offsets @(0, 1)
+        $p.Fill = New-LinBrush -colors @('#F2FFFFFF', '#FFFFD9F0') -offsets @(0, 1)
         $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
         $rt = New-Object System.Windows.Media.RotateTransform(0)
         $p.RenderTransform = $rt
@@ -430,20 +430,20 @@ function New-Particle {
         'spark' {
             $el = New-Object System.Windows.Shapes.Path
             $el.Data = [System.Windows.Media.Geometry]::Parse($script:SparkData)
-            $el.Fill = New-LinBrush -colors @('#FFFFFFFF', '#FFD4EEFF') -offsets @(0, 1)
+            $el.Fill = New-LinBrush -colors @('#FFFFFFFF', '#FFFFD9F0') -offsets @(0, 1)
         }
         'bubble' {
             $el = New-Object System.Windows.Shapes.Path
             $el.Data = [System.Windows.Media.Geometry]::Parse($script:BubbleData)
             $el.Fill = New-Object System.Windows.Media.SolidColorBrush ([System.Windows.Media.Color][System.Windows.Media.ColorConverter]::ConvertFromString('#F2FFFFFF'))
-            $el.Stroke = New-Object System.Windows.Media.SolidColorBrush ([System.Windows.Media.Color][System.Windows.Media.ColorConverter]::ConvertFromString('#4D2B9BF4'))
+            $el.Stroke = New-Object System.Windows.Media.SolidColorBrush ([System.Windows.Media.Color][System.Windows.Media.ColorConverter]::ConvertFromString('#4D0F6CBD'))
             $el.StrokeThickness = 1.2
             $offX = 0.0; $offY = 0.0
         }
         'heart' {
             $el = New-Object System.Windows.Shapes.Path
             $el.Data = [System.Windows.Media.Geometry]::Parse($script:HeartData)
-            $el.Fill = New-LinBrush -colors @('#FFFFB3D9', '#FF2B9BF4') -offsets @(0, 1)
+            $el.Fill = New-LinBrush -colors @('#FFFF8C00', '#FF0F6CBD') -offsets @(0, 1)
         }
         'z' {
             $el = New-Object System.Windows.Controls.TextBlock
@@ -451,7 +451,7 @@ function New-Particle {
             $el.FontFamily = New-Object System.Windows.Media.FontFamily('Segoe UI')
             $el.FontWeight = [System.Windows.FontWeights]::Bold
             $el.FontSize = 17
-            $el.Foreground = New-LinBrush -colors @('#FFFFFFFF', '#FFD4EEFF') -offsets @(0, 1)
+            $el.Foreground = New-LinBrush -colors @('#FFFFFFFF', '#FFFFD9F0') -offsets @(0, 1)
         }
     }
     $el.IsHitTestVisible = $false

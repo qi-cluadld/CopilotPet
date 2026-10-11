@@ -12,20 +12,20 @@ function New-Particle {
         'spark' {
             $el = New-Object System.Windows.Shapes.Path
             $el.Data = [System.Windows.Media.Geometry]::Parse($script:SparkData)
-            $el.Fill = New-LinBrush -colors @('#FFFFFFFF', '#FFD4EEFF') -offsets @(0, 1)
+            $el.Fill = New-LinBrush -colors @('#FFFFFFFF', '#FFFFD9F0') -offsets @(0, 1)
         }
         'bubble' {
             $el = New-Object System.Windows.Shapes.Path
             $el.Data = [System.Windows.Media.Geometry]::Parse($script:BubbleData)
             $el.Fill = New-Object System.Windows.Media.SolidColorBrush ([System.Windows.Media.Color][System.Windows.Media.ColorConverter]::ConvertFromString('#F2FFFFFF'))
-            $el.Stroke = New-Object System.Windows.Media.SolidColorBrush ([System.Windows.Media.Color][System.Windows.Media.ColorConverter]::ConvertFromString('#4D2B9BF4'))
+            $el.Stroke = New-Object System.Windows.Media.SolidColorBrush ([System.Windows.Media.Color][System.Windows.Media.ColorConverter]::ConvertFromString('#4D0F6CBD'))
             $el.StrokeThickness = 1.2
             $offX = 0.0; $offY = 0.0
         }
         'heart' {
             $el = New-Object System.Windows.Shapes.Path
             $el.Data = [System.Windows.Media.Geometry]::Parse($script:HeartData)
-            $el.Fill = New-LinBrush -colors @('#FFFFB3D9', '#FF2B9BF4') -offsets @(0, 1)
+            $el.Fill = New-LinBrush -colors @('#FFFF8C00', '#FF0F6CBD') -offsets @(0, 1)
         }
         'z' {
             $el = New-Object System.Windows.Controls.TextBlock
@@ -33,7 +33,7 @@ function New-Particle {
             $el.FontFamily = New-Object System.Windows.Media.FontFamily('Segoe UI')
             $el.FontWeight = [System.Windows.FontWeights]::Bold
             $el.FontSize = 17
-            $el.Foreground = New-LinBrush -colors @('#FFFFFFFF', '#FFD4EEFF') -offsets @(0, 1)
+            $el.Foreground = New-LinBrush -colors @('#FFFFFFFF', '#FFFFD9F0') -offsets @(0, 1)
         }
     }
     $el.IsHitTestVisible = $false
