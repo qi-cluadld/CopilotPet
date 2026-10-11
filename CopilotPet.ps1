@@ -146,16 +146,34 @@ $script:CrestX = 120.0
 $script:CrestY = 72.0
 $script:CenterY = 122.0
 # 核心:六边形(尖朝上),圆角较大,像一个软软的坐垫
-# 彩虹飘带环: 外圈 82 + 内孔 56 + 中间小圆 36(放脸); 默认 EvenOdd 填充 -> 自动成环带 + 中心圆盘
-function New-RingData {
-    param([double]$CX = 120, [double]$CY = 122, [double]$R1 = 82, [double]$R2 = 56, [double]$R3 = 36)
-    $parts = @()
-    foreach ($r in @($R1, $R2, $R3)) {
-        $parts += ('M {0:0.##},{1:0.##} A {2:0.##},{2:0.##} 0 1 0 {3:0.##},{1:0.##} A {2:0.##},{2:0.##} 0 1 0 {4:0.##},{1:0.##} Z' -f ($CX - $r), $CY, $r, ($CX + $r), ($CX - $r))
+# 微软 Copilot 标志 = 两块圆角方块斜着叠; 这个函数生成其中一块(可整体旋转)
+function New-SquircleData {
+    param([double]$CX = 120, [double]$CY = 122, [double]$Size = 104, [double]$R = 32, [double]$Rot = -10)
+    $h = $Size / 2
+    $pts = @(
+        @((- $h + $R), (- $h)), @(($h - $R), (- $h)), @($h, (- $h + $R)), @($h, ($h - $R)),
+        @(($h - $R), $h), @((- $h + $R), $h), @((- $h), ($h - $R)), @((- $h), (- $h + $R))
+    )
+    $rad = $Rot * [Math]::PI / 180.0
+    $co = [Math]::Cos($rad); $si = [Math]::Sin($rad)
+    $abs = @()
+    foreach ($p in $pts) {
+        $x = $p[0] * $co - $p[1] * $si
+        $y = $p[0] * $si + $p[1] * $co
+        $abs += , @(($CX + $x), ($CY + $y))
     }
-    return ($parts -join ' ')
+    $sb = New-Object System.Text.StringBuilder
+    [void]$sb.Append(('M {0:0.##},{1:0.##} L {2:0.##},{3:0.##} ' -f $abs[0][0], $abs[0][1], $abs[1][0], $abs[1][1]))
+    foreach ($k in 2, 3, 4, 5, 6, 7) {
+        [void]$sb.Append(('A {0:0.##},{0:0.##} 0 0 1 {1:0.##},{2:0.##} ' -f $R, $abs[$k][0], $abs[$k][1]))
+        $nx = if ($k -eq 7) { 0 } else { $k + 1 }
+        [void]$sb.Append(('L {0:0.##},{1:0.##} ' -f $abs[$nx][0], $abs[$nx][1]))
+    }
+    [void]$sb.Append(('A {0:0.##},{0:0.##} 0 0 1 {1:0.##},{2:0.##} Z' -f $R, $abs[0][0], $abs[0][1]))
+    return $sb.ToString()
 }
-$script:BodyData = New-RingData
+# 后面那块(右下)画在身体层; 前面那块在星芒层, 脸正好压在它上面
+$script:BodyData = New-SquircleData -CX 150 -CY 152 -Size 104 -R 32 -Rot -10
 # 星芒(6 片):圆角长条,围着核心转一圈
 $script:ArmLen = 58.0
 $script:ArmThick = 17.0
@@ -372,40 +390,25 @@ $OrbitLayer = N 'OrbitLayer'; $ParticleLayer = N 'ParticleLayer'
 # ---------------------------------------------------------------- 计时元素
 $script:Orbit = New-Object System.Collections.ArrayList
 # 统一的陶土橙渐变(绝对坐标, 让 12 片星芒共用同一束光)
+# 前面那块圆角方块: 蓝 -> 青 -> 绿 -> 黄 的斜向线性渐变
 function New-MarkBrush {
-    $b = New-Object System.Windows.Media.RadialGradientBrush
-    $b.MappingMode = [System.Windows.Media.BrushMappingMode]::Absolute
-    $b.Center = New-Object System.Windows.Point(120, 92)
-    $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
-    $b.RadiusX = 152; $b.RadiusY = 152
-
-    $b.Center = New-Object System.Windows.Point(120, 92)
-    $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
-    $b.RadiusX = 152; $b.RadiusY = 152
-    [void]$b.GradientStops.Add((New-Gs '#FFFFE28A' 0))
-    [void]$b.GradientStops.Add((New-Gs '#FFE3008C' 0.45))
-    [void]$b.GradientStops.Add((New-Gs '#FFF8D22A' 1))
+    $b = New-Object System.Windows.Media.LinearGradientBrush
+    $b.StartPoint = New-Object System.Windows.Point(0.15, 0)
+    $b.EndPoint = New-Object System.Windows.Point(0.85, 1)
+    [void]$b.GradientStops.Add((New-Gs '#FF0F6CBD' 0))
+    [void]$b.GradientStops.Add((New-Gs '#FF00B7C3' 0.35))
+    [void]$b.GradientStops.Add((New-Gs '#FF7FBA00' 0.7))
+    [void]$b.GradientStops.Add((New-Gs '#FFFFD400' 1))
     return $b
 }
-
-# 十二道等宽圆头射线: 和中间的圆盘合起来就是 GitHub Copilot 星号(整只就是标志轮廓)
-# 局部坐标: (0,0) = 宠物中心; 齿从半径 26 长到 94, 所以转起来是绕中心
-$script:PetalData = 'M 0,-14 C 14,-26 26,-48 28,-76 C 16,-58 6,-32 0,-14 Z'
 function Initialize-Blossom {
-    for ($i = 0; $i -lt 0; $i++) {
-        $p = New-Object System.Windows.Shapes.Path
-        $p.Data = [System.Windows.Media.Geometry]::Parse($script:PetalData)
-        $p.Fill = New-MarkBrush
-        $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
-        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 60 + 18)
-        $p.IsHitTestVisible = $false
-        [System.Windows.Controls.Canvas]::SetLeft($p, $script:CenterX)
-        [System.Windows.Controls.Canvas]::SetTop($p, $script:CenterY)
-        [void]$BlossomLayer.Children.Add($p)
-    }
+    $p = New-Object System.Windows.Shapes.Path
+    $p.Data = [System.Windows.Media.Geometry]::Parse((New-SquircleData -CX 114 -CY 116 -Size 104 -R 32 -Rot -10))
+    $p.Fill = New-MarkBrush
+    $p.IsHitTestVisible = $false
+    [void]$BlossomLayer.Children.Add($p)
 }
 Initialize-Blossom
-
 # 身边飘的三颗小闪光
 $script:Orbit = New-Object System.Collections.ArrayList
 function Initialize-Orbit {

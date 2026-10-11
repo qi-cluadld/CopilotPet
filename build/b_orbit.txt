@@ -1,38 +1,23 @@
 # 统一的陶土橙渐变(绝对坐标, 让 12 片星芒共用同一束光)
+# 前面那块圆角方块: 蓝 -> 青 -> 绿 -> 黄 的斜向线性渐变
 function New-MarkBrush {
-    $b = New-Object System.Windows.Media.RadialGradientBrush
-    $b.MappingMode = [System.Windows.Media.BrushMappingMode]::Absolute
-    $b.Center = New-Object System.Windows.Point(120, 92)
-    $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
-    $b.RadiusX = 152; $b.RadiusY = 152
-
-    $b.Center = New-Object System.Windows.Point(120, 92)
-    $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
-    $b.RadiusX = 152; $b.RadiusY = 152
-    [void]$b.GradientStops.Add((New-Gs '#FFFFE28A' 0))
-    [void]$b.GradientStops.Add((New-Gs '#FFE3008C' 0.45))
-    [void]$b.GradientStops.Add((New-Gs '#FFF8D22A' 1))
+    $b = New-Object System.Windows.Media.LinearGradientBrush
+    $b.StartPoint = New-Object System.Windows.Point(0.15, 0)
+    $b.EndPoint = New-Object System.Windows.Point(0.85, 1)
+    [void]$b.GradientStops.Add((New-Gs '#FF0F6CBD' 0))
+    [void]$b.GradientStops.Add((New-Gs '#FF00B7C3' 0.35))
+    [void]$b.GradientStops.Add((New-Gs '#FF7FBA00' 0.7))
+    [void]$b.GradientStops.Add((New-Gs '#FFFFD400' 1))
     return $b
 }
-
-# 十二道等宽圆头射线: 和中间的圆盘合起来就是 GitHub Copilot 星号(整只就是标志轮廓)
-# 局部坐标: (0,0) = 宠物中心; 齿从半径 26 长到 94, 所以转起来是绕中心
-$script:PetalData = 'M 0,-14 C 14,-26 26,-48 28,-76 C 16,-58 6,-32 0,-14 Z'
 function Initialize-Blossom {
-    for ($i = 0; $i -lt 0; $i++) {
-        $p = New-Object System.Windows.Shapes.Path
-        $p.Data = [System.Windows.Media.Geometry]::Parse($script:PetalData)
-        $p.Fill = New-MarkBrush
-        $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
-        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 60 + 18)
-        $p.IsHitTestVisible = $false
-        [System.Windows.Controls.Canvas]::SetLeft($p, $script:CenterX)
-        [System.Windows.Controls.Canvas]::SetTop($p, $script:CenterY)
-        [void]$BlossomLayer.Children.Add($p)
-    }
+    $p = New-Object System.Windows.Shapes.Path
+    $p.Data = [System.Windows.Media.Geometry]::Parse((New-SquircleData -CX 114 -CY 116 -Size 104 -R 32 -Rot -10))
+    $p.Fill = New-MarkBrush
+    $p.IsHitTestVisible = $false
+    [void]$BlossomLayer.Children.Add($p)
 }
 Initialize-Blossom
-
 # 身边飘的三颗小闪光
 $script:Orbit = New-Object System.Collections.ArrayList
 function Initialize-Orbit {
