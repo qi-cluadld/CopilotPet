@@ -369,8 +369,7 @@ function New-MarkBrush {
     $b.Center = New-Object System.Windows.Point(120, 92)
     $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
     $b.RadiusX = 152; $b.RadiusY = 152
-    $b.StartPoint = New-Object System.Windows.Point(0, 1)
-    $b.EndPoint = New-Object System.Windows.Point(1, 0)
+
     $b.Center = New-Object System.Windows.Point(120, 92)
     $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
     $b.RadiusX = 152; $b.RadiusY = 152
