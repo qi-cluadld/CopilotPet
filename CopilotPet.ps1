@@ -146,7 +146,16 @@ $script:CrestX = 120.0
 $script:CrestY = 72.0
 $script:CenterY = 122.0
 # 核心:六边形(尖朝上),圆角较大,像一个软软的坐垫
-$script:BodyData = New-RoundPolyData -R 44 -N 12 -Round 0.55 -Phase ([Math]::PI / 2)
+# 彩虹飘带环: 外圈 82 + 内孔 56 + 中间小圆 36(放脸); 默认 EvenOdd 填充 -> 自动成环带 + 中心圆盘
+function New-RingData {
+    param([double]$CX = 120, [double]$CY = 122, [double]$R1 = 82, [double]$R2 = 56, [double]$R3 = 36)
+    $parts = @()
+    foreach ($r in @($R1, $R2, $R3)) {
+        $parts += ('M {0:0.##},{1:0.##} A {2:0.##},{2:0.##} 0 1 0 {3:0.##},{1:0.##} A {2:0.##},{2:0.##} 0 1 0 {4:0.##},{1:0.##} Z' -f ($CX - $r), $CY, $r, ($CX + $r), ($CX - $r))
+    }
+    return ($parts -join ' ')
+}
+$script:BodyData = New-RingData
 # 星芒(6 片):圆角长条,围着核心转一圈
 $script:ArmLen = 58.0
 $script:ArmThick = 17.0
@@ -383,7 +392,7 @@ function New-MarkBrush {
 # 局部坐标: (0,0) = 宠物中心; 齿从半径 26 长到 94, 所以转起来是绕中心
 $script:PetalData = 'M 0,-14 C 14,-26 26,-48 28,-76 C 16,-58 6,-32 0,-14 Z'
 function Initialize-Blossom {
-    for ($i = 0; $i -lt 6; $i++) {
+    for ($i = 0; $i -lt 0; $i++) {
         $p = New-Object System.Windows.Shapes.Path
         $p.Data = [System.Windows.Media.Geometry]::Parse($script:PetalData)
         $p.Fill = New-MarkBrush
