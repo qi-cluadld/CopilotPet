@@ -364,27 +364,29 @@ $OrbitLayer = N 'OrbitLayer'; $ParticleLayer = N 'ParticleLayer'
 $script:Orbit = New-Object System.Collections.ArrayList
 # 统一的陶土橙渐变(绝对坐标, 让 12 片星芒共用同一束光)
 function New-MarkBrush {
-    $b = New-Object System.Windows.Media.RadialGradientBrush
+    $b = New-Object System.Windows.Media.LinearGradientBrush
     $b.MappingMode = [System.Windows.Media.BrushMappingMode]::Absolute
+    $b.StartPoint = New-Object System.Windows.Point(0, 1)
+    $b.EndPoint = New-Object System.Windows.Point(1, 0)
     $b.Center = New-Object System.Windows.Point(120, 92)
     $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
     $b.RadiusX = 152; $b.RadiusY = 152
     [void]$b.GradientStops.Add((New-Gs '#FFFFE28A' 0))
     [void]$b.GradientStops.Add((New-Gs '#FFE3008C' 0.45))
-    [void]$b.GradientStops.Add((New-Gs '#FF8661C5' 1))
+    [void]$b.GradientStops.Add((New-Gs '#FFF8D22A' 1))
     return $b
 }
 
 # 十二道等宽圆头射线: 和中间的圆盘合起来就是 GitHub Copilot 星号(整只就是标志轮廓)
 # 局部坐标: (0,0) = 宠物中心; 齿从半径 26 长到 94, 所以转起来是绕中心
-$script:PetalData = 'M 0,-22 C -8,-32 -14,-50 -14,-64 C -14,-76 -8,-84 0,-86 C 8,-84 14,-76 14,-64 C 14,-50 8,-32 0,-22 Z'
+$script:PetalData = 'M 0,-14 C 14,-26 26,-48 28,-76 C 16,-58 6,-32 0,-14 Z'
 function Initialize-Blossom {
-    for ($i = 0; $i -lt 8; $i++) {
+    for ($i = 0; $i -lt 6; $i++) {
         $p = New-Object System.Windows.Shapes.Path
         $p.Data = [System.Windows.Media.Geometry]::Parse($script:PetalData)
         $p.Fill = New-MarkBrush
         $p.RenderTransformOrigin = New-Object System.Windows.Point(0, 0)
-        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 45 + 12)
+        $p.RenderTransform = New-Object System.Windows.Media.RotateTransform($i * 60 + 18)
         $p.IsHitTestVisible = $false
         [System.Windows.Controls.Canvas]::SetLeft($p, $script:CenterX)
         [System.Windows.Controls.Canvas]::SetTop($p, $script:CenterY)
