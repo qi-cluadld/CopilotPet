@@ -1,7 +1,10 @@
 # 统一的陶土橙渐变(绝对坐标, 让 12 片星芒共用同一束光)
 function New-MarkBrush {
-    $b = New-Object System.Windows.Media.LinearGradientBrush
+    $b = New-Object System.Windows.Media.RadialGradientBrush
     $b.MappingMode = [System.Windows.Media.BrushMappingMode]::Absolute
+    $b.Center = New-Object System.Windows.Point(120, 92)
+    $b.GradientOrigin = New-Object System.Windows.Point(120, 92)
+    $b.RadiusX = 152; $b.RadiusY = 152
     $b.StartPoint = New-Object System.Windows.Point(0, 1)
     $b.EndPoint = New-Object System.Windows.Point(1, 0)
     $b.Center = New-Object System.Windows.Point(120, 92)
